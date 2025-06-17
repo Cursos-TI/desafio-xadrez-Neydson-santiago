@@ -12,8 +12,7 @@ int main() {
     printf("1 - BISPO\n");
     printf("2 - TORRE\n");
     printf("3 - RAINHA\n");
-
-
+    printf("4 - CAVALO\n");
 
     while (1){
         printf("\nSua escolha: ");
@@ -21,10 +20,10 @@ int main() {
             // Limpa o buffer de entrada após ler o inteiro
             while (getchar() != '\n'); 
 
-            if (escolha >= 1 && escolha <= 3) {
+            if (escolha >= 1 && escolha <= 4) {
                 break; // Sai do loop se a entrada for válida
             } else {
-                printf("Opção inválida. Por favor, digite um número entre 1 e 3.\n\n");
+                printf("Opção inválida. Por favor, digite um número entre 1 e 4.\n\n");
             }
         } else {
             printf("Entrada inválida. Por favor, digite um número inteiro.\n\n");
@@ -150,6 +149,39 @@ int main() {
                 }
             }
             break; // Sai do switch case 3
+        }
+        case 4: { // Cavalo
+            int escolhaCavalo;
+
+            while (1) {
+                printf("Para qual tipo de movimento 'L' o CAVALO irá?\n\n");
+                printf("1 - Duas casas para frente e uma para direita\n");
+                printf("2 - Duas casas para frente e uma para esquerda\n");
+                printf("3 - Duas casas para trás e uma para direita\n");
+                printf("4 - Duas casas para trás e uma para esquerda\n\n");
+                printf("Sua escolha: ");
+
+                if (scanf("%d", &escolhaCavalo) == 1) {
+                    while (getchar() != '\n');
+
+                    if (escolhaCavalo >= 1 && escolhaCavalo <= 4) { 
+                        printf("\nCavalo moveu-se em 'L'.\n\n");
+                        // Para o Cavalo, o loop de simulação de "casas" é diferente, pois não é uma linha reta.
+                        switch (escolhaCavalo) {
+                            case 1: printf("Movimento: 2 pra frente, 1 pra direita.\n\n"); break;
+                            case 2: printf("Movimento: 2 pra frente, 1 pra esquerda.\n\n"); break;
+                            case 3: printf("Movimento: 2 pra trás, 1 pra direita.\n\n"); break;
+                            case 4: printf("Movimento: 2 pra trás, 1 pra esquerda.\n\n"); break;
+                        } break;
+                    } else {
+                        printf("Opção de movimento inválida. Por favor, digite um número entre 1 e 4.\n\n");
+                    }
+                } else {
+                    printf("Entrada inválida. Por favor, digite um número inteiro.\n\n");
+                    while (getchar() != '\n');
+                }
+            }
+            break;
         }
         default: 
             printf("Opção inválida, tente novamente.\n\n");
